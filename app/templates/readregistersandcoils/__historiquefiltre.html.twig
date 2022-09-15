@@ -1,0 +1,36 @@
+<style>
+    table tr{
+        border: solid;
+    }
+    table td{
+        border: solid;
+    }
+    table th{
+        border: solid;
+    }
+</style>
+<table class="mdc-data-table__table" id="tableh">
+    <thead>
+    <tr class="mdc-data-table__header-row">
+        <th class="mdc-data-table__header-cell" role="columnheader" scope="col"> Date de debut</th>
+        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date de fin</th>
+        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Message</th>
+        <th class="mdc-data-table__header-cell" role="columnheader" scope="col" id="lieu">Lieu</th>
+
+    </tr>
+    </thead>
+    <tbody class="mdc-data-table__content">
+    {% for hist in historiquesA %}
+        <tr class="mdc-data-table__row">
+            <th class="mdc-data-table__cell" scope="row">{{ hist.DateDebut | date('Y-m-d H:i:s') }}</th>
+            {%if hist.DateFin is null %}
+                <td class="mdc-data-table__cell">{{ hist.DateFin | raw  }}</td>
+            {% else  %}
+                <td class="mdc-data-table__cell">{{ hist.DateFin | date('Y-m-d H:i:s') }}</td>
+            {% endif %}
+            <td class="mdc-data-table__cell">{{ hist.message }}</td>
+            <td class="mdc-data-table__cell">{{ hist.lieu }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

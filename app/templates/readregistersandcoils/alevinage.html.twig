@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}Alevinage{% endblock %}
+{% block body %}
+    <center><h2>Alevinage</h2></center>
+    <button  class="mdc-button mdc-button--raised buttonhistorique" >
+        <a style="color: #f1f1f1;" href="{{ path('historiquealarmdetail')}}">
+            <span class="mdc-button__label" >Afficher tout l'historique</span>
+        </a>
+    </button>
+    <br><br>
+    <div class="container">
+
+        {{ include('readregistersandcoils/__historiquefiltre.html.twig') }}
+
+    </div>
+    <br>
+    <div class="row cardstyle" >
+
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Ras 1</h5>
+
+            <a>Oxygène : </a><a id="sonde_oxygen_ext" >{{ oxygen_ext }}
+            </a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1" href="{{ path('rasalevinage')}}"  class="card-link">Voir le detail</a>
+</button>
+        </div>
+    </div>
+
+
+{% endblock %}
+        {% block javascripts %}
+
+    <script>
+    var data = {request :document.getElementById('')};
+setInterval(function (){
+
+   $("#tableh").load(window.location + " #tableh");
+
+},10000)
+    function set_document_by_id_value(id,valeur){
+        return document.getElementById(id).innerHTML = valeur
+    }
+</script>
+<script>
+    function set_document_by_id_value(id,valeur){
+        return document.getElementById(id).innerText = valeur
+    }
+    var host =window.location.origin
+var data = {request :document.getElementById('')};
+setInterval(function (){
+    $.ajax({
+        type:"GET",
+        url:"/JsonValue" ,
+        dataType: 'json',
+        data:data,
+        success: function (result){
+            set_document_by_id_value('sonde_oxygen_ext',result['oxygen_ext']);
+           }
+    })
+},4000)
+
+</script>
+{%  endblock %}

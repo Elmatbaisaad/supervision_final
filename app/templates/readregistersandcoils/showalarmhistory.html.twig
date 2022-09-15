@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique des alarms{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+    {{ include('readregistersandcoils/__historyalarm.html.twig') }}
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+    var data = {request :document.getElementById('')};
+setInterval(function (){
+
+   $("#tableh").load(window.location + " #tableh");
+
+},10000)
+    function set_document_by_id_value(id,valeur){
+        return document.getElementById(id).innerHTML = valeur
+    }
+</script>
+{% endblock %}

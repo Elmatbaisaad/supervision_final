@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  php:
+    container_name: php_supervision
+    build:
+      context: ./php
+    ports:
+      - '9001:9000'
+    volumes:
+      - ./app:/var/www/symfony_docker
+    environment:
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.4
+
+  data_storage_caller:
+    tty: true
+    container_name: data_storage_caller
+    command: bash -c "php script_runner.php & php script_alarm_history_runner.php"
+    build:
+      context: ./data_storage_caller
+    ports:
+      - '9009:9008'
+    volumes:
+      - ./runner:/var/www/php_runner
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.10
+
+
+  nginx:
+    container_name: nginx_supervision
+    image: nginx:1.20-alpine
+    ports:
+      - '8080:80'
+    volumes:
+      - ./app:/var/www/symfony_docker
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.2
+
+  mysqlservice:
+    container_name: mysql_supervision
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_DATABASE: 'db_supervision'
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.5
+
+  phpmyadmin:
+    container_name: phpmyadmin_supervision
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: mysqlservice
+      PMA_PORT: 3306
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.6
+
+  composer:
+        image: composer:2.1.14
+        command: ["composer", "install"]
+        volumes:
+            - ./app:/var/www/symfony_docker
+  mypython:
+    container_name: fake_automate_supervision
+    tty: true
+    ports:
+      - '532:532'
+      - '533:533'
+      - '534:534'
+    build:
+      context: ./fake_automate
+    image: python:fpm
+    volumes:
+      - ./fake_automate:/app
+    networks:
+      test_network_supervision:
+        ipv4_address: 192.168.1.3
+
+
+
+
+networks:
+  test_network_supervision:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+volumes:
+  mysqldata: {}

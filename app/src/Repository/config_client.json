@@ -1,0 +1,111 @@
+{
+  "serveur":[
+    {
+      "id": "PR1",
+      "ip": "tcp://192.36.39.167:502",
+      "unitId": 0
+    },
+    {
+      "id": "PR2",
+      "ip": "tcp://192.36.39.170:502",
+      "unitId": 0
+    },
+    {
+      "id": "AR1",
+      "ip": "tcp://192.36.39.169:502",
+      "unitId": 0
+
+    }
+
+  ],
+  "mot": [
+    {
+      "nom": "sonde Oxygene",
+      "id": 0,
+      "adresse": 0
+    },
+    {
+      "nom": "Sonde de Niveau",
+      "id": 1,
+      "adresse": 3
+    },
+    {
+      "nom": "Sonde de Pression",
+      "id": 2,
+      "adresse": 32
+    },
+    {
+      "nom": "sonde Oxygene ras 2",
+      "id": 4,
+      "adresse": 0
+    },
+    {
+      "nom": "Sonde de Niveau ras 2",
+      "id": 7,
+      "adresse": 3
+    },
+    {
+      "nom": "Sonde de Pression ras 2",
+      "id": 8,
+      "adresse": 32
+    },
+    {
+      "nom": "oxy exterieur",
+      "id": 3,
+      "adresse": 1
+    },
+    {
+      "nom": "temperature",
+      "id": 5,
+      "adresse": 10
+    },
+    {
+      "nom": "niv bassin",
+      "id": 6,
+      "adresse": 6
+    }
+  ],
+
+  "bit":[
+    {
+      "nom":"Alarm OFF",
+      "adresse":408
+    },
+    {
+      "nom":"Pump ON",
+      "adresse":45
+
+    },
+    {
+      "nom":"Filtre ON",
+      "adresse":24
+    },
+    {
+      "nom":"Alarm OFF RAS 2",
+      "adresse":408
+    },
+    {
+      "nom":"Pump ON RAS 2",
+      "adresse":45
+    },
+    {
+      "nom":"Filtre ON RAS 2",
+      "adresse":24
+    },
+    {
+      "nom":"Alarm pompe 1",
+      "adresse":54
+    },
+    {
+      "nom":"Alarm oxy ext",
+      "adresse":45
+    },
+    {
+      "nom":"alarm oxy aval",
+      "adresse":46
+
+    }
+
+
+  ]
+}

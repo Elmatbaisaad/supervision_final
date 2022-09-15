@@ -1,0 +1,89 @@
+<div class="row cardstyleras" >
+    {% if id == 'RAS 1' %}
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde oxygene</h5>
+
+            <a >Oxygène : </a>
+
+            <a id="sonde_oxygen" >{{ oxygen }}
+            </a>
+
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: oxygen_id}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde de niveau</h5>
+
+            <a >Niveau : </a><a id="sonde_niveau" >{{ niveau }}
+            </a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: niveau_id}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde de Pression</h5>
+
+            <a >pression : </a><a id="sonde_pump" >{{ pression }}
+            </a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: pression_id}) }}"  class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+        {% endif %}
+    {% if id == 'RAS 2' %}
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde oxygene</h5>
+
+            <a >Oxygène : </a>
+
+            <a id="sonde_oxygen_ras2p" >{{ oxygen_ras2 }}</a>
+
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: oxygen_id_ras2}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde de niveau</h5>
+
+            <a >Niveau : </a><a id="sonde_niveau_ras2p" >{{ niveau_ras2 }}
+            </a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: niveau_id_ras2}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde de Pression</h5>
+
+            <a >pression : </a><a id="sonde_pump_ras2p" >{{ pression_ras2 }}
+            </a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised " >
+            <a style="color: #f1f1f1;" href="{{ path('findbyid',{id: pression_id_ras2}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+<script src="{{ asset('js/rasajax.js') }}"></script>

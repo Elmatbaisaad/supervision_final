@@ -1,0 +1,42 @@
+{
+  "serveur":{
+
+    "ip": "tcp://192.36.39.167:502",
+    "unitId": 0
+  },
+  "mot": [
+    {
+      "id": "sonde Oxygene",
+      "adresse": 0
+    },
+    {
+      "id": "Sonde de Niveau",
+      "adresse": 3
+    },
+    {
+      "id": "Sonde de Pression",
+      "adresse": 32
+    }
+  ],
+
+  "bit":[
+    {
+      "id":"Alarm OFF",
+      "adresse":408,
+      "message": "Le niveau d'eau est bas"
+    },
+    {
+      "id":"Pump ON",
+      "adresse":45,
+      "message": "La pompe est arrêtée"
+
+    },
+    {
+      "id":"Filtre ON",
+      "adresse":24,
+      "message": "Le filtre est arrêtée"
+    }
+
+
+  ]
+}

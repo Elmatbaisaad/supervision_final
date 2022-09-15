@@ -1,0 +1,89 @@
+{
+  "mot": [
+    {
+      "adresse": 0,
+      "valeur": 990
+    },
+    {
+      "adresse": 1,
+      "valeur": 98
+    },
+    {
+      "adresse": 2,
+      "valeur": 216
+    },{
+      "adresse": 3,
+      "valeur": 990
+    },
+    {
+      "adresse": 4,
+      "valeur": 98
+    },
+    {
+      "adresse": 5,
+      "valeur": 216
+    },
+    {
+      "adresse": 6,
+      "valeur": 990
+    },
+    {
+      "adresse": 7,
+      "valeur": 98
+    },
+    {
+      "adresse": 8,
+      "valeur": 216
+    }
+  ],
+
+  "bit":[
+    {
+      "adresse":9,
+      "valeur": "true"
+    },
+    {
+      "adresse":11,
+      "valeur":"true"
+
+    },
+    {
+      "adresse":4,
+      "valeur":"true"
+    },
+    {
+      "adresse":408,
+      "valeur": "true"
+    },
+    {
+      "adresse":45,
+      "valeur":"true"
+
+    },
+    {
+      "adresse":24,
+      "valeur":"true"
+    },
+    {
+      "adresse":54,
+      "valeur": "true"
+    },
+    {
+      "adresse":45,
+      "valeur":"true"
+
+    },
+    {
+      "adresse":46,
+      "valeur":"true"
+    }
+   
+
+  ],
+  "serveur":[
+    {
+      "adresse":"192.168.1.3",
+      "port":532
+    }
+  ]
+}

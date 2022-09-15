@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Store alarm{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+<script>
+    function set_document_by_id_value(id,valeur){
+        return document.getElementById(id).innerText = valeur
+    }
+    var host =window.location.origin
+    var data = {request :document.getElementById('')};
+    setInterval(function (){
+        $.ajax({
+            type:"GET",
+            url:host+"/jsonalarm" ,
+            dataType: 'json',
+            data:data,
+            success: function (result){
+                set_document_by_id_value('historiquesA',result['historiquesA']);
+
+            }
+        })
+
+    },10000)
+</script>
+{% endblock %}

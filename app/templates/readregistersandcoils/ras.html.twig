@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ id }}{% endblock %}
+{% block body %}
+    <center><h2>{{ id }}</h2></center>
+    <br>
+    <div>
+        <center>
+    <button  class="mdc-button mdc-button--raised " >
+        <a style="color: #f1f1f1;" href="{{ path('pisciculture')}}">
+            <span class="mdc-button__label" >Retour à la pisciculture</span>
+        </a>
+    </button>
+
+    <button  class="mdc-button mdc-button--raised " >
+        <a style="color: #f1f1f1;" href="{{ path('historiquealarmdetail')}}">
+            <span class="mdc-button__label" >Afficher tout l'historique</span>
+        </a>
+    </button>
+        </center>
+    </div>
+    <br>
+    <div class="container">
+
+        {{ include('readregistersandcoils/__historyfiltreras.html.twig') }}
+
+    </div>
+    <br>
+    {{ include('readregistersandcoils/__ras.html.twig') }}
+<br>
+    {{ include('readregistersandcoils/__rasalarm.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+
+
+
+<script>
+        var data = {request :document.getElementById('')};
+    setInterval(function (){
+
+       $("#tableh").load(window.location + " #tableh");
+
+    },10000)
+        function set_document_by_id_value(id,valeur){
+            return document.getElementById(id).innerHTML = valeur
+        }
+</script>
+
+
+
+{%  endblock %}

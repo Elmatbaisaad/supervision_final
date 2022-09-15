@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique{% endblock %}
+
+{% block body %}
+
+    <canvas id="myChart" width="400" height="180"></canvas>
+    <form id="days">
+              <label for="date">
+            Choisir une date :<input id="datepicker" type="date" name="date" value="{{ datetime }}" ></label>
+    </form>
+    <br><br>
+{% endblock %}
+{% block javascripts%}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+
+
+    <script>
+            dates = {{date|raw }}
+            datapoints = {{valeur|raw }}
+        const data = {
+            labels:dates ,
+            datasets:[{
+                label: '{{idsonde | join(', ') }}',
+                data:
+                    datapoints,
+                backgroundColor:["red"],
+                borderColor: 'rgb(75, 192, 192)',
+                fill: false
+            }]
+        }
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                responsive:true,
+                animation: {
+                    duration: 0
+                }
+            }
+        }
+
+        var histChart = new Chart(document.getElementById('myChart'),config)
+        const datadate = {request :document.getElementById('datepicker').value}
+
+
+     $('#datepicker')
+            .on("change",function charger() {
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "{{path('jsonhistoryvalue',{id: repoprobeid})}}",
+                    data:{'date':document.getElementById('datepicker').value} ,
+                    dataType: 'json',
+                    success: function(result)
+                    {
+
+                        histChart.data.datasets.pop();
+                        var newlabels = []
+                        var newdata = []
+                        var newvalue = []
+                        for (var i in result['historique']){
+
+                            newlabels[i]=  result['date'][i]
+                            newdata[i] = result['historique'][i]['valeur'] /100
+                            newvalue[i]={x:newlabels[i],y:newdata[i]}
+
+                        }
+                        const data = {
+                                label: result['idsonde'] ,
+                                data: newvalue,
+                                backgroundColor:["red"],
+                                borderColor: 'rgb(75, 192, 192)',
+                                fill: false
+                        }
+                        histChart.data.labels = newlabels
+                        histChart.data.datasets.push(data);
+                        histChart.update()
+
+                     },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        histChart.data.datasets.pop();
+                        histChart.update()
+                    }
+
+                });
+            });
+setInterval(function (){
+   $.ajax({
+       type:"GET",
+       url: "{{path('jsonhistoryvalue',{id: repoprobeid})}}",
+       data:{'date':document.getElementById('datepicker').value} ,
+       dataType: 'json',
+       success: function(result)
+       {
+
+           histChart.data.datasets.pop();
+           var newlabels = []
+           var newdata = []
+           var newvalue = []
+           for (var i in result['historique']){
+
+               newlabels[i]=  result['date'][i]
+               newdata[i] = result['historique'][i]['valeur'] /100
+               newvalue[i]={x:newlabels[i],y:newdata[i]}
+
+           }
+           const data = {
+               label: result['idsonde'] ,
+               data: newvalue,
+               backgroundColor:["red"],
+               borderColor: 'rgb(75, 192, 192)',
+               fill: false
+           }
+           histChart.data.labels = newlabels
+           histChart.data.datasets.push(data);
+           histChart.update()
+
+       },
+
+   })
+},60000)
+    </script>
+
+
+
+{%endblock%}

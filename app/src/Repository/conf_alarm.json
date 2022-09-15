@@ -1,0 +1,69 @@
+{
+    "alarm":[
+        {
+            "nom" : "Alarm OFF",
+            "message" : "Le niveau d'eau est bas",
+            "lieu" : "RAS 1",
+            "zone" : "Pisciculture",
+            "id": 0
+        },
+        {
+            "nom" : "Pump ON",
+            "message" : "La pompe est arrêtée",
+            "lieu" : "RAS 1",
+            "zone" : "Pisciculture",
+            "id": 1
+        },
+        {
+            "nom" : "Filtre ON",
+            "message" : "Le filtre est arrêté",
+            "lieu" : "RAS 1",
+            "zone" : "Pisciculture",
+            "id": 2
+        },
+        {
+            "nom" : "Alarm OFF RAS 2",
+            "message" : "Niveau d'eau est bas RAS 2",
+            "lieu" : "RAS 2",
+            "zone" : "Pisciculture",
+            "id": 3
+
+        },
+        {
+            "nom" : "Pump ON RAS 2",
+            "message" : "La pompe est arrêtée RAS 2",
+            "lieu" : "RAS 2",
+            "zone" : "Pisciculture",
+            "id": 4
+        },
+        {
+            "nom" : "Filtre ON RAS 2",
+            "message" : "Filtre arrêté RAS 2",
+            "lieu" : "RAS 2",
+            "zone" : "Pisciculture",
+            "id": 5
+
+        },
+        {
+            "nom" : "Alarm pompe 1",
+            "message" : "La pompe 1 est arrêté",
+            "lieu" : "RAS 1",
+            "zone" : "Alevinage",
+            "id": 6
+        },
+        {
+            "nom" : "Alarm oxy ext",
+            "message" : "Alarm oxygene extérieur",
+            "lieu" : "RAS 1",
+            "zone" : "Alevinage",
+            "id": 7
+        },
+        {
+            "nom" : "alarm oxy aval",
+            "message" : "Alarm oxygene aval",
+            "lieu" : "RAS 1",
+            "zone" : "Alevinage",
+            "id": 8
+        }
+    ]
+}

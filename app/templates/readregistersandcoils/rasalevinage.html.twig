@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block title %}RAS 1{% endblock %}
+{% block body %}
+<center><h2>RAS 1</h2></center>
+    <br>
+    <div>
+        <center>
+<button  class="mdc-button mdc-button--raised" >
+    <a style="color: #f1f1f1;" href="{{ path('alevinage')}}">
+        <span class="mdc-button__label" >Retour à l'alevinage</span>
+    </a>
+</button>
+    <button  class="mdc-button mdc-button--raised" >
+        <a style="color: #f1f1f1;" href="{{ path('historiquealarmdetail')}}">
+            <span class="mdc-button__label" >Afficher tout l'historique</span>
+        </a>
+    </button>
+        </center>
+    </div>
+<br>
+<div class="container">
+    {{ include('readregistersandcoils/__historyfiltreras.html.twig') }}
+</div>
+<br>
+<div class="row cardstyleras" >
+
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde oxygene Extérieur</h5>
+
+            <a >Oxygène Extérieur : </a>
+
+            <a id="sonde_oxygen_ext" >{{ oxygen_ext }}</a>
+
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised" >
+            <a style="color: #f1f1f1" href="{{ path('findbyid',{id: oxygen_ext_id}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 class="card-title">Sonde de Temperature</h5>
+
+            <a >Temperature : </a><a id="sonde_temperature" >{{ temperature }}</a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised" >
+            <a style="color: #f1f1f1" href="{{ path('findbyid',{id: temperature_id}) }}" class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="card" style="width: 18rem;height: 10rem">
+        <div class="card-body">
+            <h5 >Sonde de Niveau</h5>
+
+            <a >Niveau : </a><a id="sonde_niveau" >{{ niveau }}</a>
+            <br><br><br>
+            <button  class="mdc-button mdc-button--raised" >
+            <a style="color:#f1f1f1" href="{{ path('findbyid',{id: niveau_id}) }}"  class="card-link">Voir l'historique</a>
+            </button>
+        </div>
+    </div>
+</div>
+    <br>
+    <div class="row cardstyleras" >
+
+        <div class="card" style="width: 18rem;height: 10rem">
+            <div class="card-body">
+                <h5 class="card-title"> Alarm Pompe 1</h5>
+                {% if pompe1 == 0 %}
+                <a id="alarm_pompe_1">
+                    eteint
+                </a>
+                {% else %}
+                <a id="alarm_pompe_1">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {% if pompe1 == 0 %}
+                <div id="message_pompe1">
+                    <li>
+                        {{ message_pompe1 }}
+
+                    </li>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;height: 10rem">
+            <div class="card-body">
+                <h5 class="card-title">Alarm Oxygene Extérieur</h5>
+{%if aoxy_ext == 0 %}
+               <a id="alarm_oxy_ext" >eteint</a>
+                {%  else %}
+                <a id="alarm_oxy_ext" >allumé</a>
+                {% endif %}
+                <br><br>
+                {% if aoxy_ext == 0 %}
+                <div id="message_oxy_ext">
+                    <li>
+                            {{ message_oxy_ext }}
+                    </li>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;height: 10rem">
+            <div class="card-body">
+                <h5 class="card-title">Alarm Oxygene aval</h5>
+                {%if aoxy_aval == 0 %}
+                <a id="alarm_oxy_aval">
+                    eteint
+                </a>
+                {%  else %}
+                <a id="alarm_oxy_aval">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {%if aoxy_aval == 0 %}
+                <div id="message_oxy_aval">
+                    <li>
+                        {{ message_oxy_aval }}
+
+                    </li>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/rasalevinage.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,138 @@
+<div class="row cardstyleras" >
+    {% if id == 'RAS 1' %}
+        <div class="card" style="width: 18rem;height: 10rem">
+            <div class="card-body">
+                <h5 class="card-title">Filtre</h5>
+                {% if f_on == 0 %}
+                <a id="filtre_ras1">
+                    éteint
+                </a>
+                {%else %}
+                <a id="filtre_ras1">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {% if f_on == 0 %}
+                <div id="message_filtre">
+                    <li>
+                        {{ message_filtre }}
+                    </li>
+                </div>
+{% endif %}
+
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Alarm </h5>
+{% if a_off == 0 %}
+               <a id="alarm_ras1" >eteint</a>
+
+                {%else %}
+                <a id="alarm_ras1" >allumé</a>
+                {% endif %}
+                <br><br>
+                {% if  a_off == 0%}
+                <div id="message_alarm">
+                    <li>
+                        {{ message_alarm }}
+                    </li>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Pump</h5>
+{% if p_on == 0 %}
+                <a id="pump_ras1">
+                    eteint
+                </a>
+                {% else %}
+                <a id="pump_ras1">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {% if p_on == 0 %}
+                <div id="message_pompe">
+                    <li>
+                        {{ message_pump }}
+                    </li>
+                </div>
+{% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {% if id == 'RAS 2' %}
+        <div class="card" style="width: 18rem;height: 10rem">
+            <div class="card-body">
+                <h5 class="card-title">Filtre</h5>
+                {% if f_on_ras2 == 0 %}
+                <a  id="filtre_ras2">
+                    eteint
+                </a>
+                {% else %}
+                <a id="filtre_ras2">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {% if f_on_ras2 == 0 %}
+                <div id="message_filtre_ras2">
+                    <li>
+                        {{ message_filtre_ras2 }}
+                    </li>
+                </div>
+{% endif %}
+
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Alarm</h5>
+{% if a_off_ras2 == 0 %}
+                <a id="alarm_ras2" >eteint</a>
+                {% else %}
+                <a id="alarm_ras2" >allumé</a>
+                {% endif %}
+                <br><br>
+                {% if a_off_ras2 == 0 %}
+                <div id="message_alarm_ras2">
+                    <li>
+                        {{ message_alarm_ras2 }}
+                    </li>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Pompe</h5>
+{% if p_on_ras2 == 0 %}
+                <a id="pump_ras2">
+                    eteint
+                </a>
+                {% else %}
+                <a id="pump_ras2">
+                    allumé
+                </a>
+                {% endif %}
+                <br><br>
+                {% if p_on_ras2 == 0 %}
+                <div id="message_pompe_ras2">
+                    <li>
+                        {{ message_pump_ras2 }}
+                    </li>
+                </div>
+{% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+</div>
